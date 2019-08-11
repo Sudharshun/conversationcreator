@@ -76,6 +76,7 @@ Action Should be defined as
 {
     "id": "starterDialog1",
     "setting": "in the park",
+    "participants":["Person A","Person B"],
     "motivation": "to make friends",
     "sequence": "friendly.conversation.001",
     "key": "millenial friendly",
