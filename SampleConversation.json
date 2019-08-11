@@ -1,0 +1,77 @@
+{
+    "id": "starterDialog1",
+    "setting": "in the park",
+    "motivation": "to make friends",
+    "sequence": "friendly.conversation.001",
+    "key": "millenial friendly",
+    "instrumentalities": "Web|chat|voice",
+    "norms": "TBD",
+    "genre": "conversational|reasuring|fact finding",
+    "elements": [
+        {
+            "id": "name",
+            "type": "string",
+            "title": "Name",
+            "nature": "inquiry"
+        },
+        {
+            "id": "email",
+            "type": "email",
+            "title": "Email",
+            "nature": "inquiry"
+        },
+        {
+            "id": "gender",
+            "type": "string",
+            "title": "Gender",
+            "enum": [
+                "male",
+                "female"
+            ],
+            "nature": "inquiry",
+            "default": "Male",
+            "mutable": true,
+            "required": true
+        },
+        {
+            "id": "lookupnumber",
+            "type": "string",
+            "title": "Lookup Number",
+            "actions": [
+                {
+                    "type": "Action.independentHttpAction",
+                    "method": "POST",
+                    "stimuli": "ondatacapture",
+                    "headers": [
+                        {
+                            "name": "Authorization",
+                            "value": ""
+                        }
+                    ],
+                    "endpoint": "/validate",
+                    "payload": "{'lookupnumber':'{{##value##}}'}"
+                }
+            ],
+            "nature": "inquiry"
+        },
+        {
+            "id": "legaldisc",
+            "title": "disclosure",
+            "type": "string",
+            "value": "Content will be used to look up in our systems",
+            "sequence": "last",
+            "nature": "disclosure"
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.managedFunction",
+            "functionName": "pick.a.function.andrun",
+            "stimuli": "ondatacapture",
+            "title": "Submit",
+            "manifestation": "callout",
+            "managedSystemReference": "complexBackendSystem007",
+            "payload": "{{#SELF#}}"
+        }
+    ]
+}
